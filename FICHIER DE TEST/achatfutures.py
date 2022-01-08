@@ -7,6 +7,7 @@ from requests.models import Response
 import pprint
 from ftx import FtxClient
 import ccxt
+from telegram import *
 
 
 client = ftx.FtxClient(api_key="TEiyW-MuA9al-cLgAw32nhEGrt9LgWY1K47-tHCh", api_secret="6PTcHT7s_gesH36U0nLbg4XgWhEMunxWQwfIM9ES")
@@ -37,12 +38,11 @@ def long():
     api_secret = '6PTcHT7s_gesH36U0nLbg4XgWhEMunxWQwfIM9ES'
     client = FtxClient(api_key=api_key, api_secret=api_secret)
     symbol = 'BTC-PERP'
-    type='stop_limit'
-    side = 'buy'
+    side = 'stop'
     qty = 0.00021
     price = 12345.0
     client.place_order(type,symbol, side, price, qty)
-    
+
 
 ccxt_bot = ccxt.ftx({
     'enableRateLimit': True,
@@ -55,4 +55,7 @@ coin='BTC-PERP'
 amount=0.00019
 stopPrice="40000"
 
-ccxt_bot.create_order(coin, 'stop', stopPrice, 'buy', amount, {'leverage': 5})
+long()
+
+#ccxt_bot.create_order(coin, 'stop', 'buy', amount, {'leverage': 5})
+#ccxt_bot.create_order('SOL-PERP','stop','sell',0.05583472920156338,params={'triggerPrice':135.00,'leverage': 5,'reduceOnly': True})
