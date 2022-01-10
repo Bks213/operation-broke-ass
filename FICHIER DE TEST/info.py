@@ -1,5 +1,6 @@
 from tradingview_ta import TA_Handler, Interval, Exchange
 from proxy import *
+import ccxt
 
 #------------------------------------INSTALLATION----------------------------------#
 
@@ -30,7 +31,7 @@ rsiplusbas=(24)#METTRE LA VALEUR INFÉRIEUR DU RSI
 
 #CE BASER SUR LE TABLEAU SI DESSOUS POUR CHOISIR L'INTERVAL EN SUIVANT LE MODÈLE SUIVANT
 
-intervales=Interval.INTERVAL_15_MINUTES
+intervales=Interval.INTERVAL_1_MINUTE
 
 """
     INTERVAL_1_MINUTE 
@@ -44,3 +45,16 @@ intervales=Interval.INTERVAL_15_MINUTES
     INTERVAL_1_WEEK
     INTERVAL_1_MONTH
     """
+
+
+#-----------------------------------PARAMÈTRES DU COMPTE-----------------------------------#
+ccxt_bot = ccxt.ftx({
+    'enableRateLimit': True,
+    'apiKey': 'TEiyW-MuA9al-cLgAw32nhEGrt9LgWY1K47-tHCh',
+    'secret': '6PTcHT7s_gesH36U0nLbg4XgWhEMunxWQwfIM9ES', 
+})
+
+
+pourcentage=50 #pourcentage du portefeuille utilisé à chaque trade
+
+stoplosspourcentage=10
